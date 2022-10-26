@@ -1,0 +1,67 @@
+<h1 mat-dialog-title>Add Product Form</h1>
+<div class="mat-dialog-content">
+      <form [formGroup]="productForm">
+            <mat-form-field appearance="outline">
+                  <mat-label>Product Name</mat-label>
+                  <input matInput placeholder="Name" [class.is-invalid]="productName?.invalid && productName?.touched" formControlName="productName" type="text">
+                  
+            </mat-form-field>
+            <div *ngIf="productName?.invalid && productName?.touched">
+                  <small class="text-danger" *ngIf="productName?.errors?.['required']">Productname is required!*</small>
+
+                  <small class="text-danger" *ngIf="productName?.errors?.['minlength']">Productname must not be at least 3 characters!*</small>
+
+                  <small class="text-danger" *ngIf="productName?.errors?.['forbidenName']">Productname not allowed!*</small>
+            </div>
+            <!-- Drop down select -->
+            <mat-form-field appearance="outline">
+                  <mat-label>Product Category</mat-label>
+                  <mat-select formControlName="category" placeholder="Category">
+                        <mat-option value="Fruits">Fruits</mat-option>
+                        <mat-option value="Vegetables">Vegetables</mat-option>
+                        <mat-option value="Electronic">Electronic</mat-option>
+                  </mat-select> 
+            </mat-form-field>
+      
+      
+            <!-- Date Picker -->
+            <mat-form-field appearance="outline">
+                  <mat-label>Choose a date</mat-label>
+                  <input formControlName="datepicker" matInput [matDatepicker]="picker">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+      
+      
+                <!-- Material buttons -->
+                <label id="radio-group-lebel" for="">Product Freshness</label>
+                  <mat-radio-group formControlName="freshness"
+                  aria-labelledby="example-radio-group-label"
+                  id="radio-group"
+                  >
+                              <mat-radio-button class="radio-button" *ngFor="let fresh of freshProduct" [value]="fresh">
+                              {{fresh}}
+                        </mat-radio-button>
+                  </mat-radio-group>
+      
+      
+                  <!-- Input for price -->
+                  <mat-form-field appearance="outline">
+                        <mat-label>Price</mat-label>
+                        <input formControlName="price" matInput type="number" placeholder="Name">
+                  </mat-form-field>
+      
+      
+                  <!-- Mat textare -->
+                  <mat-form-field appearance="outline">
+                        <mat-label>Comment</mat-label>
+                        <textarea formControlName="comment" matInput></textarea>
+                  </mat-form-field>    
+      </form>             
+</div>
+<!-- Adding the save and cancel button -->
+<div mat-dialog-action [align]="'end'">
+      <button mat-raised-button color="warn" mat-dialog-close>Close</button>
+      <button id="save-btn" mat-raised-button color="primary" (click)="addProduct()">{{actionBtn}}</button>
+</div>

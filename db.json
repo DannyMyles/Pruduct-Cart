@@ -1,0 +1,32 @@
+{
+  "ProductList": [
+    {
+      "productName": "Availables",
+      "category": "Electronic",
+      "freshness": "Brand New",
+      "datepicker": "2022-10-27T21:00:00.000Z",
+      "price": 21,
+      "comment": "wdddssd",
+      "id": 3
+    },
+    {
+      "productName": "gyygyf",
+      "category": "Electronic",
+      "freshness": "Second Hand",
+      "datepicker": "2022-10-05T21:00:00.000Z",
+      "price": 12,
+      "comment": "News",
+      "id": 4
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
